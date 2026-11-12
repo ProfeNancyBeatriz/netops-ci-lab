@@ -1,9 +1,17 @@
 /**
  * Valida direcciones IPv4 en notacion decimal (por ejemplo 192.168.1.10).
  */
-export function isValidIPv4(ip: string): boolean {
-  return /^\d{1,3}(\.\d{1,3}){3}$/.test(ip);
-}
+export function isValidIPv4(ip: string): boolean { 
+
+  if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(ip)) { 
+
+    return false; 
+
+  } 
+
+  return ip.split('.').every((octeto) => Number(octeto) <= 255); 
+
+} 
 
 /**
  * Indica si una IPv4 pertenece a un rango privado (RFC 1918):
